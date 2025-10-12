@@ -3,77 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌍 ЕКОСВІТ | Платформа Сталого Розвитку та Споживання</title>
+    <title>⚡ ЕКОСВІТ | Ультра-Інтерактивна Платформа</title>
     
     <style>
         :root {
-            --color-green-dark: #008080; 
-            --color-green-light: #48c48a; 
-            --color-accent-blue: #00a8e8; 
-            --color-text: #333;
-            --color-light-bg: #f3fffb; 
-            --color-success: #4cd137; /* Світло-зелений для успіху */
-            --color-error: #ff5252; /* Червоний для помилки */
+            --color-light-text: #2d3436;
+            --color-light-bg: #f3fffb;
+            --color-green-dark: #008080;
+            --color-green-light: #48c48a;
+            --color-accent-blue: #00a8e8;
+            --color-card-bg: white;
+            --color-shadow: rgba(0, 0, 0, 0.1);
+            
+            /* DARK MODE VARIABLES */
+            --color-dark-text: #ecf0f1;
+            --color-dark-bg: #1a1a2e;
+            --color-dark-header: #0f0f23;
+            --color-dark-card-bg: #272741;
         }
+
+        /* ОСНОВНИЙ СТИЛЬ */
         body {
             font-family: 'Open Sans', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--color-light-bg);
-            color: var(--color-text);
+            color: var(--color-light-text);
             line-height: 1.6;
+            transition: background-color 0.5s, color 0.5s; /* Анімація переходу режимів */
         }
-        /* ... (Інші CSS-стилі: hero-section, nav-list, grid-3, article-card, btn-primary) ... */
+        .main-header, footer {
+            background-color: var(--color-green-dark);
+            color: white;
+        }
         .hero-section {
             background: linear-gradient(rgba(0, 128, 128, 0.8), rgba(0, 128, 128, 0.8)), url('path/to/eco-forest-background.jpg'); 
             background-size: cover;
             color: white;
             padding: 80px 0;
             text-align: center;
-        }
-        .section-image-bg {
-            background-color: white;
-            position: relative;
-            padding: 40px 20px;
-        }
-        .section-image-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                -45deg,
-                rgba(0,0,0,0.03),
-                rgba(0,0,0,0.03) 5px,
-                transparent 5px,
-                transparent 10px
-            );
-            opacity: 0.5;
-            z-index: 0;
-        }
-        .main-header {
-            background-color: var(--color-green-dark);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .nav-list {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-        }
-        .nav-list a {
-            color: white;
-            text-decoration: none;
-            padding: 20px 25px;
-            display: block;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-        .nav-list a:hover {
-            background-color: var(--color-green-light);
         }
         .container {
             width: 90%;
@@ -84,63 +52,93 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 30px;
         }
         .article-card {
-            background-color: white;
+            background-color: var(--color-card-bg);
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 10px var(--color-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         .article-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px var(--color-shadow);
         }
         .btn-primary {
-            display: inline-block;
             background-color: var(--color-accent-blue);
             color: white;
             padding: 12px 30px;
-            text-decoration: none;
-            border: none; /* Для кнопок квіза */
-            cursor: pointer; /* Курсор для інтерактиву */
+            border: none;
             border-radius: 50px;
-            font-weight: bold;
+            cursor: pointer;
             transition: background-color 0.3s;
-            margin-right: 10px;
-        }
-        .btn-primary:hover:not(:disabled) {
-            background-color: #007bff;
-        }
-        .btn-primary:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
         }
         h2 { color: var(--color-green-dark); text-align: center; margin-bottom: 40px; }
-
-        /* Стилі для прогрес-бару */
-        #progress-bar {
-            width: 100%;
-            height: 30px;
-            background-color: #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-top: 15px;
+        
+        /* СТИЛЬ DARK MODE */
+        body.dark-mode {
+            background-color: var(--color-dark-bg);
+            color: var(--color-dark-text);
         }
-        #progress-fill {
-            height: 100%;
-            width: 0%; 
-            background-color: var(--color-green-light);
-            transition: width 1s ease-out; 
-            line-height: 30px;
-            color: white;
-            text-align: center;
+        .dark-mode .main-header, .dark-mode footer {
+            background-color: var(--color-dark-header);
+        }
+        .dark-mode .hero-section {
+            background: linear-gradient(rgba(15, 15, 35, 0.9), rgba(15, 15, 35, 0.9)), url('path/to/eco-forest-background.jpg');
+            background-size: cover;
+        }
+        .dark-mode .article-card {
+            background-color: var(--color-dark-card-bg);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        }
+        .dark-mode h2 {
+            color: var(--color-green-light);
+        }
+        
+        /* СТИЛЬ КАЛЬКУЛЯТОРА */
+        .calc-input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .calc-input-group label {
+            display: block;
+            margin-bottom: 5px;
             font-weight: bold;
+        }
+        .calc-input-group input, .calc-input-group select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #result-display {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fceea7; /* Яскравий акцент для результату */
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #d35400;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        /* СТИЛЬ КНОПКИ РЕЖИМУ */
+        #mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            font-size: 1.5em;
+            padding: 10px;
+            background-color: var(--color-accent-blue);
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
+
+    <button id="mode-toggle" class="btn-primary">🌙</button>
 
     <header class="main-header">
         <div class="container"></div>
@@ -148,9 +146,8 @@
             <ul class="nav-list">
                 <li><a href="#home">Головна</a></li>
                 <li><a href="#topics">Теми</a></li>
+                <li><a href="#calculator">Калькулятор 🧪</a></li>
                 <li><a href="#guide">Еко-Гід</a></li>
-                <li><a href="#tools">Інструменти</a></li>
-                <li><a href="#contact">Спільнота</a></li>
             </ul>
         </nav>
     </header>
@@ -159,49 +156,76 @@
         <div class="container">
             <h1>Майбутнє Планети Починається З Тобою!</h1>
             <p style="font-size: 1.2em; max-width: 600px; margin: 20px auto;">
-                Ваш провідник у світ сталого розвитку: від сортування до чистої енергії.
+                Оціни свій вуглецевий слід і зміни свої звички!
             </p>
-            
-            <h3>Наш Спільний Еко-Прогрес</h3>
-            <div id="progress-bar">
-                <div id="progress-fill">0% Завершено!</div>
-            </div>
-            
-            <a href="#guide" class="btn-primary" style="margin-top: 30px;">Почати Еко-Подорож</a>
-        </div>
-    </section>
-
-    <section id="topics" class="section-image-bg">
-        <div class="container">
-            <h2>🔥 Актуальні Теми</h2>
-            <div class="grid-3">
-                <div class="article-card"> <h3>Чиста Енергія для Дому</h3> <p>...</p> <a href="#">Читати повністю →</a> </div>
-                <div class="article-card"> <h3>Збереження Води: Криза та Рішення</h3> <p>...</p> <a href="#">Читати повністю →</a> </div>
-                <div class="article-card"> <h3>Етична Мода: Купуй Розумно</h3> <p>...</p> <a href="#">Читати повністю →</a> </div>
-            </div>
+            <a href="#calculator" class="btn-primary" style="margin-top: 30px;">СКОРИСТАТИСЬ КАЛЬКУЛЯТОРОМ</a>
         </div>
     </section>
     
-    <section id="guide" class="section-image-bg">
+    <section id="calculator" class="section-image-bg">
         <div class="container">
-            <h2>♻️ Інтерактивний Еко-Гід: Перевір свої знання</h2>
+            <h2>🧪 Калькулятор Вуглецевого Сліду</h2>
+            <p style="text-align: center; margin-bottom: 40px;">Введіть дані, щоб миттєво оцінити ваш річний вплив на довкілля (у кг $\text{CO}_2$).</p>
 
-            <div id="quiz-area" style="background-color: #e6fff7; padding: 25px; border-radius: 10px;">
+            <div class="grid-3" style="grid-template-columns: 1fr 1fr 1fr;">
                 
-                <h3>Запитання 1: Куди викинути блістер від таблеток?</h3>
-                <div id="options">
-                    <button id="opt1" data-answer="wrong" class="btn-primary">Скло</button>
-                    <button id="opt2" data-answer="correct" class="btn-primary" style="background-color: var(--color-green-light);">Змішані відходи</button>
-                    <button id="opt3" data-answer="wrong" class="btn-primary">Пластик</button>
+                <div class="article-card">
+                    <h3>1. Споживання Енергії</h3>
+                    <div class="calc-input-group">
+                        <label for="electr">Електрика (кВт/міс):</label>
+                        <input type="number" id="electr" value="150" min="0">
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="gas">Газ (м³/міс):</label>
+                        <input type="number" id="gas" value="50" min="0">
+                    </div>
                 </div>
-                <p id="feedback" style="margin-top: 15px; font-weight: bold; min-height: 20px;">Оберіть варіант</p>
+
+                <div class="article-card">
+                    <h3>2. Транспорт</h3>
+                    <div class="calc-input-group">
+                        <label for="car_km">Авто (км/тиж):</label>
+                        <input type="number" id="car_km" value="100" min="0">
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="fuel_type">Тип палива:</label>
+                        <select id="fuel_type">
+                            <option value="0.239">Бензин</option>
+                            <option value="0.265">Дизель</option>
+                            <option value="0.198">Газ (LPG)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <h3>3. Харчування</h3>
+                    <div class="calc-input-group">
+                        <label for="meat_freq">М'ясо (днів/тиж):</label>
+                        <input type="number" id="meat_freq" value="3" min="0" max="7">
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="diet_type">Основна дієта:</label>
+                        <select id="diet_type">
+                            <option value="1">М'ясоїд</option>
+                            <option value="0.7">Пескетаріанець</option>
+                            <option value="0.4">Вегетаріанець</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button onclick="calculateFootprint()" class="btn-primary" style="font-size: 1.2em;">РОЗРАХУВАТИ СЛІД</button>
             </div>
             
+            <div id="result-display">
+                Ваш річний вуглецевий слід: <span id="footprint-value">0</span> кг $\text{CO}_2$
+            </div>
+            
+            <p id="advice" style="text-align: center; margin-top: 20px;"></p>
         </div>
     </section>
 
-    <section id="tools">...</section>
-    
     <footer>
         <div class="container">
             <p>&copy; 2025 ЕКОСВІТ. Усі права захищені.</p>
@@ -210,63 +234,85 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // === ЛОГІКА 1: ПЕРЕКЛЮЧЕННЯ DARK MODE ===
             
-            // === ЛОГІКА 1: АНІМАЦІЯ ПРОГРЕС-БАРУ ===
+            const modeToggle = document.getElementById('mode-toggle');
+            const body = document.body;
             
-            const fill = document.getElementById('progress-fill');
-            const targetProgress = 75; // Цільове значення прогресу у відсотках
-            
-            function animateProgressBar() {
-                let current = 0;
-                // Встановлюємо фінальну ширину для активації CSS-transition
-                fill.style.width = targetProgress + '%'; 
-
-                // Цикл для плавного оновлення тексту від 0% до targetProgress%
-                const interval = setInterval(() => {
-                    if (current < targetProgress) {
-                        current++;
-                        fill.textContent = current + '% Завершено!';
-                    } else {
-                        clearInterval(interval);
-                    }
-                }, 15); // Оновлення кожні 15 мс
-            }
-
-            // Запускаємо анімацію при завантаженні контенту
-            animateProgressBar();
-
-            
-            // === ЛОГІКА 2: ІНТЕРАКТИВНИЙ КВІЗ СОРТУВАННЯ ===
-            
-            const optionsDiv = document.getElementById('options');
-            const feedbackElement = document.getElementById('feedback');
-            const quizButtons = document.querySelectorAll('#options .btn-primary');
-
-            optionsDiv.addEventListener('click', (e) => {
-                const clickedButton = e.target;
+            modeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
                 
-                // Перевіряємо, чи ми клікнули на кнопку
-                if (clickedButton.tagName === 'BUTTON' && !clickedButton.disabled) {
-                    const answer = clickedButton.getAttribute('data-answer');
-                    
-                    // Блокуємо всі кнопки, щоб користувач не міг змінити відповідь
-                    quizButtons.forEach(btn => btn.disabled = true);
-
-                    if (answer === 'correct') {
-                        feedbackElement.textContent = '✅ Вірно! Блістери мають складний склад і йдуть до змішаних відходів.';
-                        feedbackElement.style.color = 'var(--color-success)';
-                        clickedButton.style.backgroundColor = 'var(--color-success)'; // Підсвічуємо правильну відповідь
-                    } else {
-                        feedbackElement.textContent = '❌ Помилка. Блістери йдуть до змішаних відходів. Перегляньте Еко-Гід!';
-                        feedbackElement.style.color = 'var(--color-error)';
-                        clickedButton.style.backgroundColor = 'var(--color-error)'; // Підсвічуємо неправильну відповідь
-                        
-                        // Підсвічуємо правильну відповідь для наочності
-                        document.querySelector('[data-answer="correct"]').style.backgroundColor = 'var(--color-success)';
-                    }
+                // Зміна іконки кнопки
+                if (body.classList.contains('dark-mode')) {
+                    modeToggle.textContent = '☀️'; // Сонце для світлого режиму
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    modeToggle.textContent = '🌙'; // Місяць для темного режиму
+                    localStorage.setItem('theme', 'light');
                 }
             });
             
+            // Збереження режиму при оновленні сторінки
+            if (localStorage.getItem('theme') === 'dark') {
+                body.classList.add('dark-mode');
+                modeToggle.textContent = '☀️';
+            }
+
+
+            // === ЛОГІКА 2: КАЛЬКУЛЯТОР ВУГЛЕЦЕВОГО СЛІДУ ===
+            
+            // Коефіцієнти викидів (реальні дані для прикладу, кг CO2 на одиницю)
+            const COEFFICIENTS = {
+                ELECTRICITY: 0.35, // кг CO2 на 1 кВт (середній по Україні)
+                GAS: 2.3, // кг CO2 на 1 м³
+                FLIGHT_COEF: 0.1, // Базовий вплив на їжу
+                MEAT_BASE_FOOTPRINT: 500, // Базовий річний слід від м'яса (кг CO2)
+            };
+
+            window.calculateFootprint = function() {
+                // Збір даних
+                const electr = parseFloat(document.getElementById('electr').value) || 0;
+                const gas = parseFloat(document.getElementById('gas').value) || 0;
+                const car_km = parseFloat(document.getElementById('car_km').value) || 0;
+                const fuel_coef = parseFloat(document.getElementById('fuel_type').value);
+                const meat_freq = parseFloat(document.getElementById('meat_freq').value) || 0;
+                const diet_type_mult = parseFloat(document.getElementById('diet_type').value);
+
+                // 1. ЕНЕРГІЯ (річний)
+                const energyFootprint = (electr * COEFFICIENTS.ELECTRICITY * 12) + (gas * COEFFICIENTS.GAS * 12);
+
+                // 2. ТРАНСПОРТ (річний)
+                const transportFootprint = (car_km * fuel_coef * 52); // км/тиж * коеф * 52 тижні
+
+                // 3. ХАРЧУВАННЯ (річний)
+                // Складніша логіка: залежність від частоти м'яса та загального типу дієти
+                const meatComponent = (meat_freq / 7) * COEFFICIENTS.MEAT_BASE_FOOTPRINT;
+                const dietBase = 1500; // Базовий слід (овочі, зерно)
+                const foodFootprint = (dietBase + meatComponent) * diet_type_mult; 
+                
+                // ЗАГАЛЬНИЙ РІЧНИЙ СЛІД
+                const totalFootprint = Math.round(energyFootprint + transportFootprint + foodFootprint);
+
+                // ВИВЕДЕННЯ РЕЗУЛЬТАТУ
+                document.getElementById('footprint-value').textContent = totalFootprint.toLocaleString('uk-UA');
+                
+                // ПОРАДИ (ЛОГІКА)
+                let adviceText = '';
+                if (totalFootprint > 15000) {
+                    adviceText = '⚠️ Ваш слід дуже великий. Зверніть увагу на транспорт та енергоспоживання.';
+                    document.getElementById('advice').style.color = 'var(--color-error)';
+                } else if (totalFootprint > 8000) {
+                    adviceText = '🟡 Ваш слід помірний. Спробуйте зменшити споживання м\'яса та електрики.';
+                    document.getElementById('advice').style.color = '#e67e22'; 
+                } else {
+                    adviceText = '✅ Чудово! Ваш слід нижче середнього. Продовжуйте у тому ж дусі!';
+                    document.getElementById('advice').style.color = 'var(--color-success)'; 
+                }
+                document.getElementById('advice').textContent = adviceText;
+            };
+
+            // Перший запуск при завантаженні
+            calculateFootprint();
         });
     </script>
 </body>
