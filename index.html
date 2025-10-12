@@ -3,24 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ЕКОСВІТ: Довідник зі Сталого Споживання 🌿</title>
+    <title>💚 ЕКОСВІТ | Яскравий Довідник Сталого Споживання</title>
     <style>
+        :root {
+            --color-primary: #00b894; /* Яскравий зелений */
+            --color-secondary: #ff7675; /* Коралово-червоний акцент */
+            --color-text: #2d3436;
+            --color-background: #fcfcfc;
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4; /* Світло-сірий фон */
-            color: #333;
+            background-color: var(--color-background);
+            color: var(--color-text);
         }
         header {
-            background-color: #2e8b57; /* Темно-зелений колір */
+            background: linear-gradient(135deg, var(--color-primary), #00cec9);
             color: white;
-            padding: 20px 0;
+            padding: 40px 0;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        h1 { font-size: 2.5em; margin: 0; }
         nav {
-            background-color: #3cb371; /* Світліший зелений */
-            padding: 10px 0;
+            background-color: var(--color-primary);
         }
         nav ul {
             list-style: none;
@@ -29,106 +36,215 @@
             text-align: center;
         }
         nav ul li {
-            display: inline;
-            margin: 0 15px;
+            display: inline-block;
         }
         nav ul li a {
             color: white;
             text-decoration: none;
-            font-weight: bold;
+            padding: 15px 25px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: var(--color-secondary);
         }
         .container {
-            width: 80%;
-            margin: 20px auto;
-            background-color: white;
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         section {
-            padding: 20px 0;
-            border-bottom: 1px solid #ddd;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
         h2 {
-            color: #2e8b57; /* Зелений заголовок */
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-secondary);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+        /* Стилі для інтерактивних елементів */
+        #progress-bar {
+            width: 100%;
+            height: 30px;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+        #progress-fill {
+            height: 100%;
+            width: 0%; /* Початкове значення JS */
+            background-color: var(--color-secondary);
+            transition: width 1s ease-out; /* Анімація прогресу */
+            line-height: 30px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+        .sorting-area {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+        }
+        .trash-item {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #eee;
+            cursor: grab; /* Вказує на можливість перетягування */
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+        .bin {
+            width: 100px;
+            height: 100px;
+            background-color: #3cb371;
+            margin: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>ЕКОСВІТ: Довідник зі Сталого Споживання 🌿</h1>
-        <p>Живіть усвідомлено, збережіть ресурси для майбутнього.</p>
+        <h1>ЕКОСВІТ 🌎</h1>
+        <p>Ваш яскравий гід у світі екологічних звичок.</p>
     </header>
 
     <nav>
         <ul>
             <li><a href="#home">Головна</a></li>
             <li><a href="#guide">Еко-Довідник</a></li>
-            <li><a href="#blog">Блог/Статті</a></li>
-            <li><a href="#resources">Ресурси</a></li>
-            <li><a href="#about">Про нас</a></li>
+            <li><a href="#trends">Тренди та Новини</a></li>
+            <li><a href="#tools">Інструменти</a></li>
+            <li><a href="#about">Про Нас</a></li>
         </ul>
     </nav>
 
     <div class="container">
         
         <section id="home">
-            <h2>🌍 Почніть свій шлях до сталого життя!</h2>
-            <p>Дізнайтеся, як прості щоденні звички можуть зменшити ваш вплив на довкілля. Наш довідник допоможе вам знайти пункти прийому вторсировини та кращі еко-бренди.</p>
-            <p>👉 **[Кнопка: Ознайомитись з правилами сортування]**</p>
+            <h2>✨ Наш Спільний Еко-Прогрес</h2>
+            <p>Наша спільнота вже відсортувала:</p>
+            
+            <div id="progress-bar">
+                <div id="progress-fill">0% Завершено!</div>
+            </div>
+            
+            <p style="margin-top: 25px; text-align: center;">
+                <a href="#guide" style="background-color: var(--color-secondary); color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">➡️ Почати сортувати зараз</a>
+            </p>
         </section>
         
         <section id="guide">
-            <h2>♻️ Еко-Довідник</h2>
+            <h2>♻️ Еко-Довідник: Практика Сортування (Інтерактив!)</h2>
             
-            <h3>Сортування (Покроково)</h3>
-            <p>Детальні інструкції, що робити з папером, пластиком, склом та органікою. Натисніть на категорію, щоб отримати повну інструкцію.</p>
-            <ul>
-                <li><a href="#">Як правильно сортувати пластик (PET 1, HDPE 2, PVC 3...)</a></li>
-                <li><a href="#">Переробка паперу та картону</a></li>
-            </ul>
-            
-            <h3>Мапа пунктів прийому</h3>
-            <p>Інтерактивна мапа, яка допоможе знайти найближчий до вас пункт прийому вторсировини в Україні.</p>
-        </section>
-        
-        <section id="blog">
-            <h2>📰 Блог "Зелені тренди"</h2>
-            <div class="articles">
-                <h3>Енергія</h3>
-                <p>Як економити електрику вдома, та переваги використання LED-ламп.</p>
-                <h3>Вода</h3>
-                <p>Поради щодо раціонального використання води та її очищення.</p>
-                <h3>Відходи</h3>
-                <p>Концепція Zero Waste (Нуль відходів): початок для початківців.</p>
+            <div class="sorting-area">
+                <h3>Перетягни сміття у правильний контейнер:</h3>
+                <div id="items-to-sort">
+                    <div class="trash-item" data-type="plastic">Пластикова пляшка</div>
+                    <div class="trash-item" data-type="paper">Стара газета</div>
+                    <div class="trash-item" data-type="glass">Розбита банка</div>
+                </div>
+                
+                <div id="bins" style="display: flex; justify-content: space-around; margin-top: 20px;">
+                    <div class="bin" data-bin-type="plastic" style="background-color: #0097e6;">Пластик</div>
+                    <div class="bin" data-bin-type="paper" style="background-color: #fbc531;">Папір</div>
+                    <div class="bin" data-bin-type="glass" style="background-color: #4cd137;">Скло</div>
+                </div>
             </div>
-        </section>
-
-        <section id="resources">
-            <h2>🔧 Корисні Ресурси та Інструменти</h2>
-            <ul>
-                <li>**Калькулятор вуглецевого сліду:** Оцініть свій вплив на планету.</li>
-                <li>**Еко-Глосарій:** Розшифрування екологічних термінів.</li>
-            </ul>
+            
         </section>
         
-        <section id="about">
-            <h2>🌱 Наша Місія</h2>
-            <p>Ми — команда "ЕКОСВІТ", створена з метою популяризації культури сталого споживання та надання українцям практичних інструментів для екологічного життя.</p>
-        </section>
+        <section id="trends">...</section>
+        <section id="tools">...</section>
+        <section id="about">...</section>
 
     </div>
 
     <footer>
-        <p>&copy; 2025 ЕКОСВІТ. Концепція сталого розвитку.</p>
+        <p>💚 &copy; 2025 ЕКОСВІТ. Зроблено з турботою про майбутнє.</p>
     </footer>
 
+    <script>
+        // === ЛОГІКА 1: АНІМАЦІЯ ПРОГРЕС-БАРУ (НА ГОЛОВНІЙ) ===
+        
+        // Функція для імітації завантаження прогресу
+        function animateProgressBar() {
+            const fill = document.getElementById('progress-fill');
+            // Встановлюємо цільовий прогрес (наприклад, 75%)
+            const targetProgress = 75; 
+            
+            // Встановлюємо ширину CSS
+            fill.style.width = targetProgress + '%';
+            
+            // Оновлюємо текст під час анімації (для більш реалістичного ефекту)
+            let current = 0;
+            const interval = setInterval(() => {
+                if (current < targetProgress) {
+                    current++;
+                    fill.textContent = current + '% Завершено!';
+                } else {
+                    clearInterval(interval);
+                }
+            }, 15); // Оновлюємо кожні 15 мілісекунд
+        }
+
+        // Запускаємо анімацію, коли сторінка повністю завантажиться
+        window.onload = animateProgressBar;
+        
+        
+        // === ЛОГІКА 2: ІНТЕРАКТИВНЕ СОРТУВАННЯ СМІТТЯ (ПСЕВДОКОД) ===
+        
+        /* * У реальному проекті тут використовувалися б Drag and Drop API
+        * або бібліотека jQuery UI для забезпечення перетягування.
+        * Нижче наведено, як це має працювати:
+        */
+        
+        // ПСЕВДОКОД: Ініціалізувати перетягування для всіх .trash-item
+        // const items = document.querySelectorAll('.trash-item');
+        // items.forEach(item => {
+        //     item.addEventListener('dragstart', (e) => {
+        //         e.dataTransfer.setData('text/plain', e.target.dataset.type);
+        //     });
+        // });
+
+        // ПСЕВДОКОД: Ініціалізувати зони скидання для всіх .bin
+        // const bins = document.querySelectorAll('.bin');
+        // bins.forEach(bin => {
+        //     bin.addEventListener('dragover', (e) => {
+        //         e.preventDefault(); // Дозволити скидання
+        //     });
+            
+        //     bin.addEventListener('drop', (e) => {
+        //         e.preventDefault();
+        //         const draggedType = e.dataTransfer.getData('text/plain');
+        //         const binType = e.currentTarget.dataset.binType;
+                
+        //         if (draggedType === binType) {
+        //             // УСПІХ: Сміття зникає, контейнер світиться зеленим
+        //             // console.log('Правильно! Сміття: ' + draggedType);
+        //             // e.currentTarget.style.backgroundColor = 'lime'; // тимчасова візуалізація
+        //         } else {
+        //             // ПОМИЛКА: Сміття повертається, контейнер світиться червоним
+        //             // console.log('Помилка! Потрібно: ' + binType + ', Скинуто: ' + draggedType);
+        //             // e.currentTarget.style.backgroundColor = 'red'; // тимчасова візуалізація
+        //         }
+        //     });
+        // });
+        
+        console.log("Логіка інтерактиву завантажена. Потрібен повний JS для функціональності.");
+        
+    </script>
 </body>
 </html>
